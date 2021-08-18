@@ -1,16 +1,14 @@
-package com.example.movie_mvvmclean_udemy.data
+package com.example.movie_mvvmclean_udemy.data.model.movie
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 // 싱글턴 인스턴스
+@Entity(tableName = "popular_movie")
 data class Movie(
-    @SerializedName("adult")
-    val adult: Boolean?,
-    @SerializedName("backdrop_path")
-    val backdropPath: String?,
-    @SerializedName("genre_ids")
-    val genreIds: List<Int>?,
+    @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
     val id: Int,
     @SerializedName("original_language")

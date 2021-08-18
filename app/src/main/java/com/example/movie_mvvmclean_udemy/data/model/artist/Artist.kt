@@ -1,16 +1,16 @@
-package com.example.movie_mvvmclean_udemy.data
+package com.example.movie_mvvmclean_udemy.data.model.artist
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+// 각 model 별로 테이블을 만든다
+@Entity(tableName = "popular_artist")
 data class Artist(
-    @SerializedName("adult")
-    val adult: Boolean?,
-    @SerializedName("gender")
-    val gender: Int?,
+    @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
     val id: Int,
     @SerializedName("known_for")
-    val knownFor: List<KnownFor>?,
-    @SerializedName("known_for_department")
     val knownForDepartment: String,
     @SerializedName("name")
     val name: String?,

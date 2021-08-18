@@ -1,4 +1,4 @@
-package com.example.movie_mvvmclean_udemy.data
+package com.example.movie_mvvmclean_udemy.data.model.tvShow
 import com.google.gson.annotations.SerializedName
 
 data class TVList(
