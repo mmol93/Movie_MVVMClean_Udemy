@@ -9,11 +9,11 @@ import com.example.movie_mvvmclean_udemy.data.model.artist.Artist
 @Dao
 interface ArtistDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveMovies(movies : List<Artist>)
+    suspend fun saveArtist(artist : List<Artist>)
 
     @Query("DELETE FROM popular_artist")
-    suspend fun deleteMovie(movies: List<Artist>)
+    suspend fun clearArtist()
 
     @Query("SELECT * FROM popular_artist")
-    suspend fun getMovies(movies: List<Artist>)
+    suspend fun getArtists() : List<Artist>
 }

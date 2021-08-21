@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-// 각 model 별로 테이블을 만든다
+// Set up Room database table
 @Entity(tableName = "popular_artist")
 data class Artist(
     @PrimaryKey(autoGenerate = true)

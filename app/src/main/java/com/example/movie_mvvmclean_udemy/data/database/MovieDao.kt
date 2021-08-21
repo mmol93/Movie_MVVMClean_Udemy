@@ -2,6 +2,7 @@ package com.example.movie_mvvmclean_udemy.data.database
 
 import androidx.room.*
 import com.example.movie_mvvmclean_udemy.data.model.movie.Movie
+import retrofit2.http.DELETE
 
 @Dao
 interface MovieDao {
@@ -9,8 +10,8 @@ interface MovieDao {
     suspend fun saveMovies(movies : List<Movie>)
 
     @Query("DELETE FROM popular_movie")
-    suspend fun deleteMovie(movies: List<Movie>)
+    suspend fun clearMovie()
 
     @Query("SELECT * FROM popular_movie")
-    suspend fun getMovies(movies: List<Movie>)
+    suspend fun getMovies() : List<Movie>
 }

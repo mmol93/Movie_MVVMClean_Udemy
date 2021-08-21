@@ -9,11 +9,11 @@ import com.example.movie_mvvmclean_udemy.data.model.tvShow.TVShow
 @Dao
 interface TVShowDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveMovies(movies : List<TVShow>)
+    suspend fun saveTVShow(tvShow : List<TVShow>)
 
     @Query("DELETE FROM popular_tvShow")
-    suspend fun deleteMovie(movies: List<TVShow>)
+    suspend fun clearTvShow()
 
     @Query("SELECT * FROM popular_tvShow")
-    suspend fun getMovies(movies: List<TVShow>)
+    suspend fun getTVShows(): List<TVShow>
 }
