@@ -10,10 +10,6 @@ data class TVShow(
     val id: Int,
     @SerializedName("name")
     val name: String?,
-    @SerializedName("origin_country")
-    val originCountry: List<String>?,
-    @SerializedName("original_language")
-    val originalLanguage: String?,
     @SerializedName("original_name")
     val originalName: String?,
     @SerializedName("overview")
