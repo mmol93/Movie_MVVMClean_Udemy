@@ -18,7 +18,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         // TheMovieDB API 등록
-        buildConfigField "String", "API_KEY", "\" d684fa8da316e0ab4c2e2c9b6754bcdc \""
+        buildConfigField "String","API_KEY","\"d684fa8da316e0ab4c2e2c9b6754bcdc\""
+        buildConfigField "String","BASE_URL","\"https://api.themoviedb.org/3/\""
     }
 
     buildFeatures{
@@ -81,6 +82,7 @@ dependencies {
 
     // Gson Convertor
     implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
 
     // Okhttp interceptor
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")

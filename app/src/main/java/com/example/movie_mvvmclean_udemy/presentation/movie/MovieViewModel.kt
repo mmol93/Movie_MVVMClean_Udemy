@@ -7,7 +7,8 @@ import com.example.movie_mvvmclean_udemy.data.domain.usecase.UpdateMovieUseCase
 
 class MovieViewModel(
     private val getMoviesUseCase: GetMoviesUseCase,
-    private val updateMovieUseCase: UpdateMovieUseCase) : ViewModel() {
+    private val updateMovieUseCase: UpdateMovieUseCase
+    ) : ViewModel() {
 
     fun getMovies() = liveData {
         val movieList = getMoviesUseCase.execute()

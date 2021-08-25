@@ -57,18 +57,19 @@ class MovieRepositoryImpl(
     }
 
     suspend fun getMoviesFromCache() : List<Movie>{
+        lateinit var movieList: List<Movie>
         try {
-            val response = movieCacheDataSource.getMoviesFromCache()
-        }catch (e:Exception){
-            Log.d("test", e.message.toString())
+            movieList =movieCacheDataSource.getMoviesFromCache()
+        } catch (exception: Exception) {
+            Log.i("MyTag", exception.message.toString())
         }
-
-        if (movieList.size > 0){
+        if(movieList.size>0){
             return movieList
         }else{
-            movieList = getMoviesFromDB()
+            movieList=getMoviesFromDB()
             movieCacheDataSource.saveMoviesToCache(movieList)
         }
+
         return movieList
     }
 }
