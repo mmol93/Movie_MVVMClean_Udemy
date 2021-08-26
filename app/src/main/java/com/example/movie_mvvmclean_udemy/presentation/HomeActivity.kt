@@ -3,6 +3,9 @@ package com.example.movie_mvvmclean_udemy.presentation
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import com.example.movie_mvvmclean_udemy.R
 import com.example.movie_mvvmclean_udemy.databinding.ActivityHomeBinding
@@ -31,4 +34,5 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 }

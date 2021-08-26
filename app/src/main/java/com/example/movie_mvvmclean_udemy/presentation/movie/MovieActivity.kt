@@ -3,6 +3,9 @@ package com.example.movie_mvvmclean_udemy.presentation.movie
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
@@ -50,6 +53,34 @@ class MovieActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "There is no data", Toast.LENGTH_SHORT).show()
             }
             Log.d("test", it.toString())
+        })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater : MenuInflater = menuInflater
+        inflater.inflate(R.menu.update, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.action_update -> {
+                updateMovie()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun updateMovie(){
+        binder.movieProgressBar.isGone = false
+        val response = movieVieModel.updateMovies()
+        response.observe(this, Observer {
+            if (it != null){
+                adapter.setList(it)
+                adapter.notifyDataSetChanged()
+                binder.movieProgressBar.isGone = true
+            }
         })
     }
 }
