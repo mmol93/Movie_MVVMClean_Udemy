@@ -2,6 +2,7 @@ package com.example.movie_mvvmclean_udemy.data.repository.tvshow
 
 import android.util.Log
 import com.example.movie_mvvmclean_udemy.data.domain.repository.TVShowRepository
+import com.example.movie_mvvmclean_udemy.data.model.movie.Movie
 import com.example.movie_mvvmclean_udemy.data.model.tvShow.TVShow
 import com.example.movie_mvvmclean_udemy.data.repository.tvshow.cache_data.TvShowCacheDataSource
 import com.example.movie_mvvmclean_udemy.data.repository.tvshow.local_data.TVShowLocalDataSource
@@ -21,12 +22,12 @@ class TVShowRepositoryImpl(
     }
 
     override suspend fun updateTvShow(): List<TVShow>? {
-        val newListOfMovies = getTVShowsFromAPI()
+        val newListOfTVShow = getTVShowsFromAPI()
         tvShowLocalDataSource.clearAll()
-        tvShowLocalDataSource.saveTVShowToDB(newListOfMovies)
-        tvShowCacheDataSource.saveTVShowsToCache(newListOfMovies)
+        tvShowLocalDataSource.saveTVShowToDB(newListOfTVShow)
+        tvShowCacheDataSource.saveTVShowsToCache(newListOfTVShow)
 
-        return newListOfMovies
+        return newListOfTVShow
     }
 
     suspend fun getTVShowsFromAPI() : List<TVShow>{
@@ -57,8 +58,9 @@ class TVShowRepositoryImpl(
     }
 
     suspend fun getTVShowsFromCache() : List<TVShow>{
+        lateinit var tvShowList: List<TVShow>
         try {
-            val response = tvShowCacheDataSource.getTVShowFromCache()
+            tvShowList =tvShowCacheDataSource.getTVShowFromCache()
         }catch (e:Exception){
             Log.d("test", e.message.toString())
         }
@@ -71,6 +73,4 @@ class TVShowRepositoryImpl(
         }
         return tvShowList
     }
-
-
 }

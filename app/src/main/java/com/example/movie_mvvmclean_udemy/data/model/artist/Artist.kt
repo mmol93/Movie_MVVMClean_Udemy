@@ -10,8 +10,6 @@ data class Artist(
     @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
     val id: Int,
-    @SerializedName("known_for")
-    val knownForDepartment: String,
     @SerializedName("name")
     val name: String?,
     @SerializedName("popularity")
